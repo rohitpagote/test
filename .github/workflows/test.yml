@@ -51,7 +51,7 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
-          echo env.ECR_REPOSITORY
+          echo $ECR_REPOSITORY
 
       - name: edit readme from testing-pipeline - api
         if: env.ECR_REPOSITORY == 'pipod_api'
