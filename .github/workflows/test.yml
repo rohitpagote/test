@@ -30,40 +30,35 @@ jobs:
           # token: ${{ secrets.ACTIONS_TOKEN }}
           path: ./testing-pipeline
           # ref: ${{ github.ref_name }}
-          
-      # doing ls
-      - name: printing content
-        run: |
-          ls
-          pwd
-          cd testing-pipeline
-          ls
 
       - name: print readme from testing-pipeline
+        env:
+          ECR_REPOSITORY: pipod_ui
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           cd testing-pipeline
           cat README.md
 
       - name: edit readme from testing-pipeline - ui
-        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_u', 'pipod_ui')"
+        if: "contains($ECR_REPOSITORY, 'pipod_ui')"
         run: |
           cd testing-pipeline
-          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1123@" README.md
+          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - ui
-        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_u', 'pipod_ui')"
+        if: "contains($ECR_REPOSITORY, 'pipod_ui')"
         run: |
           cd testing-pipeline
           cat README.md
 
       - name: edit readme from testing-pipeline - api
-        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_api', 'pipod_api')"
+        if: "contains($ECR_REPOSITORY, 'pipod_api')"
         run: |
           cd testing-pipeline
-          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1master-12387492@" README.md
+          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - api
-        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_api', 'pipod_api')"
+        if: "contains($ECR_REPOSITORY, 'pipod_api')"
         run: |
           cd testing-pipeline
           cat README.md
