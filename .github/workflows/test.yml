@@ -38,26 +38,26 @@ jobs:
           echo "ECR_REPOSITORY=pipod_ui" >> $GITHUB_ENV
           
       - name: edit readme from testing-pipeline - ui
-        if: ${{ env.ECR_REPOSITORY }} == 'pipod_ui'
+        if: "contains('pipod_ui', 'pipod_ui')"
         run: |
           cd testing-pipeline
-          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
+          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1${{ github.sha }}@" README.md
 
       - name: print readme from testing-pipeline - ui
-        if: ${{ env.ECR_REPOSITORY }} == 'pipod_ui'
+        if: "contains('pipod_ui', 'pipod_ui')"
         run: |
           cd testing-pipeline
           cat README.md
           echo ${{ env.ECR_REPOSITORY }} == 'pipod_ui
 
       - name: edit readme from testing-pipeline - api
-        if: ${{ env.ECR_REPOSITORY }} == 'pipod_api'
+        if: "contains('pipod_ui', 'pipod_ui')"
         run: |
           cd testing-pipeline
-          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
+          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1${{ github.sha }}@" README.md
 
       - name: print readme from testing-pipeline - api
-        if: ${{ env.ECR_REPOSITORY }} == 'pipod_api'
+        if: "contains('pipod_ui', 'pipod_ui')"
         run: |
           cd testing-pipeline
           cat README.md
