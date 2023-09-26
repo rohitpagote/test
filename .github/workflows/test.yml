@@ -44,6 +44,15 @@ jobs:
           cd testing-pipeline
           cat README.md
 
+      - name: edit readme from testing-pipeline
+        run: |
+          sed -i "s/^pipod_ui:*/pipod_ui:123" README.md
+
+      - name: print readme from testing-pipeline
+        run: |
+          cd testing-pipeline
+          cat README.md
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
