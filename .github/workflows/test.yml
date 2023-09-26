@@ -47,7 +47,7 @@ jobs:
       - name: edit readme from testing-pipeline
         run: |
           cd testing-pipeline
-          sed -i "s/^pipod_ui:*/pipod_ui:123/" ./README.md
+          sed -i "s/*pipod_ui:*/pipod_ui:123/" ./README.md
 
       - name: print readme from testing-pipeline
         run: |
