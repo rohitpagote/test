@@ -39,27 +39,28 @@ jobs:
           cd testing-pipeline
           cat README.md
           echo $ECR_REPOSITORY
+          echo 
 
       - name: edit readme from testing-pipeline - ui
-        if: github.ref == 'pipod_ui'
+        if: env.ECR_REPOSITORY == 'pipod_ui'
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - ui
-        if: github.ref == 'pipod_ui'
+        if: env.ECR_REPOSITORY == 'pipod_ui'
         run: |
           cd testing-pipeline
           cat README.md
 
       - name: edit readme from testing-pipeline - api
-        if: github.ref == 'pipod_api'
+        if: env.ECR_REPOSITORY == 'pipod_api'
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - api
-        if: github.ref == 'pipod_api'
+        if: env.ECR_REPOSITORY == 'pipod_api'
         run: |
           cd testing-pipeline
           cat README.md
