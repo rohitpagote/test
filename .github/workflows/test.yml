@@ -23,14 +23,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: checkout testing-pipeline
+      - name: checkout pipod-deploy
         uses: actions/checkout@v3
         with: 
-          repository: rohitpagote/testing-pipeline
+          repository: Cloud-Practice-PSL/testing-pipeline
           # token: ${{ secrets.ACTIONS_TOKEN }}
           path: ./testing-pipeline
           # ref: ${{ github.ref_name }}
-      
+          
+      # doing ls
+      - name: printing content
+        run: ls
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
