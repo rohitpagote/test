@@ -35,7 +35,6 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
-          echo "ECR_REPOSITORY=pipod_ui" >> $GITHUB_ENV
           
       - name: edit readme from testing-pipeline - ui
         if: "contains('pipod_ui', 'pipod_ui')"
@@ -48,7 +47,6 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
-          echo ${{ env.ECR_REPOSITORY }} == 'pipod_ui
 
       - name: edit readme from testing-pipeline - api
         if: "contains('pipod_ui', 'pipod_ui')"
