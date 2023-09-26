@@ -38,6 +38,7 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
+          echo $ECR_REPOSITORY
 
       - name: edit readme from testing-pipeline - ui
         if: "contains('$ECR_REPOSITORY', 'pipod_ui')"
