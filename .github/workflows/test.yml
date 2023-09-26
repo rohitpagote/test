@@ -40,7 +40,9 @@ jobs:
           ls
 
       - name: print readme from testing-pipeline
-        run: cat README.md
+        run: |
+          cd testing-pipeline
+          cat README.md
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
