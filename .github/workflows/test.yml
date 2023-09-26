@@ -41,25 +41,25 @@ jobs:
           echo $ECR_REPOSITORY
 
       - name: edit readme from testing-pipeline - ui
-        if: "contains('$ECR_REPOSITORY', 'pipod_ui')"
+        if: "contains(\"$ECR_REPOSITORY\", 'pipod_ui')"
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - ui
-        if: "contains('$ECR_REPOSITORY', 'pipod_ui')"
+        if: "contains(\"$ECR_REPOSITORY\", 'pipod_ui')"
         run: |
           cd testing-pipeline
           cat README.md
 
       - name: edit readme from testing-pipeline - api
-        if: "contains('$ECR_REPOSITORY', 'pipod_api')"
+        if: "contains(\"$ECR_REPOSITORY\", 'pipod_api')"
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - api
-        if: "contains('$ECR_REPOSITORY', 'pipod_api')"
+        if: "contains(\"$ECR_REPOSITORY\", 'pipod_api')"
         run: |
           cd testing-pipeline
           cat README.md
