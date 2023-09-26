@@ -48,7 +48,7 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
-          echo ${{ env.ECR_REPOSITORY }}
+          echo ${{ env.ECR_REPOSITORY }} == 'pipod_ui
 
       - name: edit readme from testing-pipeline - api
         if: ${{ env.ECR_REPOSITORY }} == 'pipod_api'
