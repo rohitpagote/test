@@ -45,13 +45,13 @@ jobs:
           cat README.md
 
       - name: edit readme from testing-pipeline - ui
-        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui', 'pipod_ui')"
+        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_u', 'pipod_ui')"
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1123@" README.md
 
       - name: print readme from testing-pipeline - ui
-        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui', 'pipod_ui')"
+        if: "contains('434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_u', 'pipod_ui')"
         run: |
           cd testing-pipeline
           cat README.md
