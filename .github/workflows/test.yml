@@ -33,7 +33,11 @@ jobs:
           
       # doing ls
       - name: printing content
-        run: ls
+        run: |
+          ls
+          pwd
+          cd testing-pipeline
+          ls
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
