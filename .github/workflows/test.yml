@@ -19,10 +19,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    # env variables
-    env:
-      ECR_REPOSITORY: 'pipod_ui'
-      IMAGE_TAG: ${{ github.sha }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -39,29 +35,29 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
-          echo $ECR_REPOSITORY
+          echo "ECR_REPOSITORY=pipod_ui" >> $GITHUB_ENV
           
       - name: edit readme from testing-pipeline - ui
-        if: $ECR_REPOSITORY == 'pipod_ui'
+        if: ${{ env.ECR_REPOSITORY }} == 'pipod_ui'
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - ui
-        if: $ECR_REPOSITORY == 'pipod_ui'
+        if: ${{ env.ECR_REPOSITORY }} == 'pipod_ui'
         run: |
           cd testing-pipeline
           cat README.md
           echo ${{ env.ECR_REPOSITORY }}
 
       - name: edit readme from testing-pipeline - api
-        if: $ECR_REPOSITORY == 'pipod_api'
+        if: ${{ env.ECR_REPOSITORY }} == 'pipod_api'
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1$IMAGE_TAG@" README.md
 
       - name: print readme from testing-pipeline - api
-        if: $ECR_REPOSITORY == 'pipod_api'
+        if: ${{ env.ECR_REPOSITORY }} == 'pipod_api'
         run: |
           cd testing-pipeline
           cat README.md
