@@ -44,10 +44,15 @@ jobs:
           cd testing-pipeline
           cat README.md
 
-      - name: edit readme from testing-pipeline
+      - name: edit readme from testing-pipeline - 1
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1123@" README.md
+
+      - name: edit readme from testing-pipeline - 2
+        run: |
+          cd testing-pipeline
+          sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1master-12387492@" README.md
 
       - name: print readme from testing-pipeline
         run: |
