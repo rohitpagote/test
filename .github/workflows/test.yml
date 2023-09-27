@@ -10,21 +10,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  id-token: write
-  contents: write
-  actions: write
-  checks: write
-  deployments: write
-  discussions: write
-  issues: write
-  pages: read
-  packages: write
-  pull-requests: write
-  repository-projects: write
-  security-events: write
-  statuses: write
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -72,11 +57,17 @@ jobs:
           cd testing-pipeline
           cat README.md
 
-      - name: Commit and Push the changes
+      - name: Commit the changes
         run: |
           cd testing-pipeline
           git config --global user.name "Rohit Pagote"
           git config --global user.email "rohitpagote12@gmail.com"
           git add README.md
           git commit -m "updated imageinfo file: {{ github.sha }}"
-          git push
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT }}
+          branch: master
+          directory: .
