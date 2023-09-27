@@ -76,7 +76,7 @@ jobs:
         run: |
           cd testing-pipeline
           git config --global user.name "Rohit Pagote"
-          git config --global user.email "rohit_pagote@persistent.com"
+          git config --global user.email "rohitpagote12@gmail.com"
           git add README.md
           git commit -m "updated imageinfo file: {{ github.sha }}"
           git push
