@@ -32,6 +32,7 @@ jobs:
         run: |
           cd testing-pipeline
           cat README.md
+          ls 
           
       - name: edit readme from testing-pipeline - ui
         if: "contains('pipod_ui', 'pipod_ui')"
