@@ -66,11 +66,13 @@ jobs:
           git add README.md
           git commit -m "updated imageinfo file: {{ github.sha }}"
           echo "${{ secrets.PAT_TOKEN }}"
+          git config -l
+          
 
       - name: Push changess
         uses: ad-m/github-push-action@master
         with:
-          # github_token: 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
+          github_token: ${{ secrets.PAT_TOKEN }}
           repository: rohitpagote/testing-pipeline
           branch: master
           directory: testing-pipeline
