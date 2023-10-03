@@ -70,5 +70,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
-          branch: master
-          directory: testing-pipeline
+          repository: rohitpagote/testing-pipeline
+          # branch: master
+          # directory: testing-pipeline
+          
