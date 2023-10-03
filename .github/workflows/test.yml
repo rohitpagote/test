@@ -67,7 +67,7 @@ jobs:
           git commit -m "updated imageinfo file: {{ github.sha }}"
           echo "${{ secrets.PAT_TOKEN }}"
           git config -l
-          
+          curl -u <username> -X POST https://api.github.com/authorizations -d '{"scopes":["repo"], "note":"Push action permission"}'
 
       - name: Push changess
         uses: ad-m/github-push-action@master
