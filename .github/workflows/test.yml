@@ -61,15 +61,16 @@ jobs:
       - name: Commit the changes
         run: |
           cd testing-pipeline
-          git config --global user.name "Rohit Pagote"
-          git config --global user.email "rohitpagote12@gmail.com"
+          git config --local user.name "Rohit Pagote"
+          git config --local user.email "rohitpagote12@gmail.com"
           git add README.md
           git commit -m "updated imageinfo file: {{ github.sha }}"
+          echo "${{ secrets.PAT_TOKEN }}"
 
       - name: Push changess
         uses: ad-m/github-push-action@master
         with:
-          github_token: "${{ secrets.PAT }}"
+          github_token: "${{ secrets.PAT_TOKEN }}"
           repository: rohitpagote/testing-pipeline
           branch: master
           directory: testing-pipeline
