@@ -69,7 +69,7 @@ jobs:
           git config -l
           curl -u rohitpagote -X POST https://api.github.com/authorizations -d '{"scopes":["repo"], "note":"Push action permission"}'
 
-      - name: Push changes
+      - name: Push changess
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
