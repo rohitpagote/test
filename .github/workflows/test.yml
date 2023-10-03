@@ -70,7 +70,7 @@ jobs:
       - name: Push changess
         uses: ad-m/github-push-action@master
         with:
-          github_token: "${{ secrets.PAT_TOKEN }}"
+          github_token: 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
           repository: rohitpagote/testing-pipeline
           branch: master
           directory: testing-pipeline
