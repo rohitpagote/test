@@ -40,14 +40,14 @@ jobs:
       - name: edit readme from testing-pipeline - ui
         # if: "contains('pipod_ui', 'pipod_ui')"
         # if: ${{ inputs.varRepositoryName }} == 'pipod_ui'
-        if: ("pipod_ui" == "pipod_ui") && ('rohit' == 'rohit')
+        if: ('pipod_ui' == 'pipod_ui') && ('rohit' == 'rohit')
         run: |
           cd testing-pipeline
           sed -i "s@^\(dev.pipod-ui.image=434837795263.dkr.ecr.us-east-1.amazonaws.com/pipod_ui:\)[^.]*@\1${{ github.sha }}@" README.md
 
       - name: print readme from testing-pipeline - ui
         # if: "contains('pipod_ui', 'pipod_ui')"
-        if: ("pipod_ui" == "pipod_ui") && ('rohit' == 'rohit')
+        if: ('pipod_ui' == 'pipod_ui') && ('rohit' == 'rohit')
         run: |
           cd testing-pipeline
           cat README.md
